@@ -1,0 +1,546 @@
+:root {
+    --primary-color: #2C5F2D;
+    --secondary-color: #97BC62;
+    --text-color: #333;
+    --light-color: #f5f5f5;
+    --accent-color: #FF6B6B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hide scrollbars but keep functionality */
+* {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+
+.logo {
+    width: 56px; /* explicit consistent logo size */
+    max-width: 56px;
+    height: auto;
+    display: block; /* remove inline baseline spacing issues */
+}
+
+/* Ensure logo inside nav/link keeps same size */
+nav .logo-container img.logo {
+    width: 56px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+/* Keep demo page nav links at original size */
+.demo-nav .nav-links a {
+    font-size: 1rem;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+#top {
+    min-height: 100vh;
+    /* fallback color while image loads or if it fails */
+    background-color: #0b3d1a;
+    /* use explicit background-image so it's harder to accidentally override */
+    background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('assets/images/forest-background001.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    /* ensure hero content isn't hidden under the fixed header */
+    padding-top: 80px;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Section Styles */
+section {
+    padding: 5rem 0;
+}
+
+section:not(#top) {
+    background-color: #ebebeb;
+}
+
+section:nth-child(2n) {
+    background-color: #f5f5f5;
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Solution Section */
+.solution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.solution-text ul {
+    list-style: none;
+}
+
+.solution-text li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.solution-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Prototype Section */
+.prototype-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.prototype-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.prototype-description ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.prototype-description li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.prototype-description li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .solution-grid,
+    .prototype-showcase {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+/* Dashboard Styles */
+.dashboard-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 100px auto 0 auto;
+    padding: 0 20px 40px 20px;
+}
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+    flex: 1 1 0;
+}
+.dashboard-box {
+    background: var(--light-color);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(44,95,45,0.08);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    font-size: 1.1rem;
+}
+.dashboard-box h2 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+.dashboard-value {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.dashboard-warning {
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    margin-top: 0.2rem;
+}
+.fire-active .dashboard-value {
+    color: var(--accent-color);
+}
+.dashboard-map {
+    background: var(--light-color);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(44,95,45,0.08);
+    padding: 2rem 1.5rem;
+    min-width: 350px;
+    max-width: 500px;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.dashboard-map h2 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.demo-dark .dashboard-map h2 {
+    color: #eaeaea; /* higher contrast for visibility on dark panel */
+    position: relative;
+    z-index: 2; /* ensure the title sits above the map canvas if overlapping */
+}
+
+/* Ensure stacking context so the title can appear above the map if needed */
+.demo-dark .dashboard-map {
+    position: relative;
+}
+
+/* Demo page dark theme overrides (neutral greys) */
+.demo-dark {
+    --bg: #000000;         /* full black for demo background */
+    --panel: #141414;      /* panel background */
+    --panel-2: #1b1b1b;    /* secondary panel */
+    --muted: #d0d0d0;      /* muted/light text */
+    --muted-2: #b3b3b3;    /* secondary muted */
+    --danger: #ff7b71;     /* keep warning accent */
+}
+
+/* Target html and body when demo-dark is applied to html/body to ensure overscroll/viewport background is black */
+html.demo-dark,
+body.demo-dark {
+    background: var(--bg) !important;
+    color: var(--muted) !important;
+    height: 100%;
+}
+
+.demo-dark header {
+    /* slightly lighter than the page background so the nav is distinct */
+    background-color: rgba(28,28,28,0.95);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.demo-dark .logo-container h1,
+.demo-dark .nav-links a {
+    color: var(--muted-2);
+}
+
+.demo-dark .nav-links a:hover {
+    color: #e6e6e6;
+}
+
+.demo-dark .dashboard-box {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    background-color: var(--panel);
+    border: 1px solid rgba(255,255,255,0.03);
+    color: var(--muted);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+.demo-dark .dashboard-box h2 {
+    color: var(--muted-2);
+}
+
+.demo-dark .dashboard-value {
+    color: #ffffff;
+}
+
+.demo-dark .dashboard-warning {
+    color: var(--danger);
+}
+
+.demo-dark .dashboard-map {
+    background: var(--panel-2);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.demo-dark footer {
+    /* make footer lighter than the page background to separate it visually */
+    background-color: var(--panel);
+    color: #d3d3d3;
+}
+
+/* Darken map tiles to better match the demo dark theme without relying on a dark tile provider */
+.demo-dark .leaflet-tile {
+    filter: brightness(0.22) contrast(1.05) saturate(0.9);
+}
+.demo-dark .leaflet-control-layers-toggle {
+    background: rgba(20,20,20,0.85) !important;
+    color: var(--muted) !important;
+    border: 1px solid rgba(255,255,255,0.04) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6) !important;
+}
+
+.demo-dark .leaflet-bar a,
+.demo-dark .leaflet-control-zoom a {
+    background: transparent !important;
+    color: var(--muted) !important;
+    width: 34px !important;
+    height: 34px !important;
+    line-height: 34px !important;
+    text-align: center !important;
+    font-size: 18px !important;
+}
+
+.demo-dark .leaflet-bar a:hover,
+.demo-dark .leaflet-control-zoom a:hover {
+    background: rgba(255,255,255,0.03) !important;
+    color: #fff !important;
+}
+
+/* De-emphasize but keep OpenStreetMap attribution visible (required by OSM license) */
+.demo-dark .leaflet-control-attribution {
+    background: rgba(0,0,0,0.0) !important; /* transparent background */
+    color: rgba(255,255,255,0.55) !important;
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    opacity: 0.85;
+}
+
+/* Keep attribution accessible on hover (increase contrast) */
+.demo-dark .leaflet-control-attribution:hover {
+    opacity: 1;
+    color: rgba(255,255,255,0.9) !important;
+}
+
+/* Ensure popups render above tiles/controls */
+.demo-dark .leaflet-popup {
+    z-index: 10000;
+}
+
+/* Dark theme popup styling */
+.demo-dark .leaflet-popup-content-wrapper {
+    background: rgba(30, 30, 30, 0.95);
+    color: #eaeaea;
+    border-radius: 8px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.6);
+}
+
+.demo-dark .leaflet-popup-content {
+    margin: 13px 24px 13px 13px;
+    color: #eaeaea;
+}
+
+.demo-dark .leaflet-popup-tip {
+    background: rgba(30, 30, 30, 0.95);
+}
+
+/* Darken map tiles to better match the demo dark theme without relying on a dark tile provider */
+.demo-dark .leaflet-tile {
+    filter: brightness(0.22) contrast(1.05) saturate(0.9);
+}
+
+#map {
+    position: relative !important;
+    height: 350px !important;
+    width: 100% !important;
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.leaflet-layer,
+.leaflet-tile {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.leaflet-tile-container {
+    will-change: transform;
+}
+
+.dark-popup .leaflet-popup-content strong {
+    color: #eaeaea;
+}
+
+/* Ensure the popup close button is visually aligned and sized for the dark theme */
+.demo-dark .leaflet-popup-close-button {
+    top: 6px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    font-size: 16px;
+    color: var(--muted-2);
+    background: rgba(255,255,255,0.04);
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 1100px) {
+    .dashboard-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .dashboard-map {
+        max-width: 100%;
+        min-width: 0;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+    .dashboard-map {
+        max-width: 100%;
+        min-width: 0;
+        margin-bottom: 1.5rem;
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+    .dashboard-box {
+        min-height: 80px;
+        padding: 1rem;
+    }
+}
