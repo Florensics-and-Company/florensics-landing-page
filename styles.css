@@ -592,7 +592,7 @@ body.demo-dark {
     font-weight: bold;
 }
 
-.component-card strong {
+strong {
     color: var(--primary-color);
 }
 
