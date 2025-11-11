@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florensics - System Overview</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://florensics.pt/">
+    <meta property="og:title" content="Florensics - System Overview">
+    <meta property="og:description"
+        content="Revolutionary decentralized network of smart sensors for early forest fire detection. First Prize Winner at TecStorm 2024.">
+    <meta property="og:image" content="https://florensics.pt/assets/images/prototype.JPG">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://florensics.pt/">
+    <meta property="twitter:title" content="Florensics - Early Forest Fire Detection">
+    <meta property="twitter:description"
+        content="Revolutionary decentralized network of smart sensors for early forest fire detection. First Prize Winner at TecStorm 2024.">
+    <meta property="twitter:image" content="https://florensics.pt/assets/images/prototype.JPG">
+
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon (uses the same image as the site logo) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/florensics.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo-container" style="text-decoration:none; color:inherit;">
+                <img src="assets/images/florensics.png" alt="Florensics Logo" class="logo">
+                <h1>Florensics</h1>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#solution">Our Solution</a>
+                <a href="index.html#prototype">Prototype</a>
+                <a href="system-overview.html">Architecture</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="top" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/forest-background001.jpg');">
+            <div class="hero-content">
+                <h1>🏛️ System Architecture</h1>
+                <p>Understanding the technology behind Florensics</p>
+            </div>
+        </section>
+
+        <section id="system-diagram">
+            <div class="container">
+                <h2>High-level System Diagram</h2>
+                <div style="margin-top: 3rem; display: flex; align-items: center; justify-content: center;">
+                    <div style="width: 800px; max-width: 100%;">
+                        <div class="mermaid" style="display: flex; align-items: center; justify-content: center;">
+---
+config:
+  theme: forest
+---
+graph TD
+  subgraph "🕸️ Forest Mesh Network"
+    E(🔥 Environment Conditions)
+    O1(🌳 Oak Node)
+    O2(🌳 Oak Node)
+    O3(🌳 Oak Node)
+    O4(🌳 Oak Node)
+    S1(🌲 Sequoia Node)
+
+    E -- 🌡️ Sensor Reading --> O1
+    O1 <--> O2 <--> O3 <--> S1
+    O1 <--> O4 <--> O2
+    O1 e1@-- 📊 Sensor Data --> S1
+    e1@{ animate: true }
+  end
+
+  subgraph "☁️ Cloud"
+    G@{ shape: cloud, label: "🤖 Gaia AI System" }
+    UI(📈 Web Dashboard)
+    Alert(🚨 Alert System)
+    Drone(🚁 Autonomous Drone)
+    A(🧑‍🚒 Authorities)
+
+    G --> UI
+    G -- Trigger --> Alert
+    Alert -- Dispatch --> Drone
+    Alert -- Inform --> A
+    Drone --> G
+  end
+
+  S1 -- 🌐 Internet Connection --> G
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="components">
+            <div class="container">
+                <h2>🧱 Core Components</h2>
+                <div class="components-grid">
+                    <div class="component-card">
+                        <h3>🌳 Oaks</h3>
+                        <ul>
+                            <li>Sensor nodes powered by solar energy</li>
+                            <li>Collect temperature, humidity, gas levels, etc.</li>
+                            <li>Form a <strong>mesh network</strong> with each other (no internet)</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-card">
+                        <h3>🌲 Sequoias</h3>
+                        <ul>
+                            <li>Gateway nodes with mobile connectivity</li>
+                            <li>Gather data from Oaks and send it to the cloud</li>
+                            <li>Perform edge-level pre-processing</li>
+                        </ul>
+                    </div>
+
+                    <div class="component-card">
+                        <h3>☁️ Gaia (Cloud System)</h3>
+                        <ul>
+                            <li>Cloud-based AI analysis platform</li>
+                            <li>Detects anomalies and patterns</li>
+                            <li>Sends alerts to authorities, triggers automated responses</li>
+                            <li>Provides a user frontend dashboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="back-home" style="text-align: center; padding: 3rem 0;">
+            <div class="container">
+                <a href="index.html" class="cta-button" style="display: inline-block; padding: 1rem 2rem; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; font-weight: 600; transition: background-color 0.3s ease;">
+                    ← Back to Home
+                </a>
+            </div>
+        </section>
+    </main>
+</body>

@@ -544,3 +544,65 @@ body.demo-dark {
         padding: 1rem;
     }
 }
+
+/* Component Cards for System Overview Page */
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.component-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.component-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.component-card h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.component-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.component-card li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.component-card li::before {
+    content: "✓";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.component-card strong {
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments for component cards */
+@media (max-width: 768px) {
+    .components-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .component-card {
+        padding: 1.5rem;
+    }
+}
